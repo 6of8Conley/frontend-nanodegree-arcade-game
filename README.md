@@ -1,6 +1,8 @@
-frontend-nanodegree-arcade-game
-===============================
+# **Udacity Front End Design Frogger like Game**
 
-Students should use this [rubric](https://www.udacity.com/course/viewer/#!/c-nd001/l-2696458597/m-2687128535) for self-checking their submission.
+## Instructions
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+Use the arrow keys to avoid the lady bugs and move across the board to the water. 
+
+## Example Game Play
+[Example](https://www.youtube.com/watch?v=SxeHV1kt7iU&feature=youtu.be)
