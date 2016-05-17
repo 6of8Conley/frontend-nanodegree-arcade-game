@@ -5,31 +5,196 @@ var Enemy = function() {
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
+    
     this.sprite = 'images/enemy-bug.png';
+    this.x = 1;
+    this.y = Math.floor((Math.random() * 3) + 1) *83 ;
+   // Enemy.sprite = new Image();
+   // Enemy.sprite.src = 'images/enemy-bug.png';
+    this.speed = Math.floor((Math.random() * 8) + 1);
+    
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
+ var moveMent = this.x;
+  this.x = moveMent + ( 10 * dt * this.speed);
+
+  if (this.x > 505) {
+    this.x = 0;
+    this.speed = Math.floor((Math.random() * 8) + 1);
+    this.y = Math.floor((Math.random() * 3) + 1) * 83;
+  }   
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
 };
 
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+//Test
+Enemy.update = function(dt) {
+  var moveMent = this.x;
+  this.x = moveMent + ( 30 * dt * this.speed);
+console.log(player.x);
+  if (this.x > 505) {
+    this.x = 0;
+    this.speed = Math.floor((Math.random() * 8) + 1);
+    this.y = Math.floor((Math.random() * 3) + 1) * 83;
+  }
+   if (player.x - this.x  < 55 && player.x - this.x > -25) {
+    if (player.y - this.y  < 5) {
+    player.x = 210;
+    player.y = 415;
+    player.update();
+   }}
 };
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+// Draw the enemy on the screen, required method for game
+Enemy.prototype.render = function() {
+    // ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    console.log(this.x);
+    console.log(this.y);
+    console.log(this.sprite);
+    console.log(this);
+    ctx.drawImage(this.sprite, this.x, this.y);
+};
 
+//Test
+Enemy.render = function() {
+    // ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    console.log(this.x);
+    console.log(this.y);
+    console.log(this.sprite);
+    console.log(this);
+    ctx.drawImage(this.sprite, this.x, this.y);
+};
+
+// Now write your own player class CHECK
+// This class requires an update(), render() and 
+// a handleInput() method. CHECK
+
+var Player = function(x, y) {
+    // Variables applied to each of our instances go here,
+    // we've provided one for you to get started
+
+    // The image/sprite for our player, this uses
+    // a helper we've provided to easily load images
+    this.sprite = 'images/char-boy.png';
+};
+
+// Update the players's position, required method for game
+// Parameter: dt, a time delta between ticks
+Player.prototype.update = function() {
+    // You should multiply any movement by the dt parameter
+    // which will ensure the game runs at the same speed for
+    // all computers.
+    ctx.drawImage(this.sprite, this.x, this.y);
+};
+//Writing not using prototype cc
+Player.update = function() {
+ ctx.drawImage(this.sprite, this.x, this.y);
+};
+
+
+// Draw the enemy on the screen, required method for game
+Player.prototype.render = function() {
+    console.log(this.x);
+    console.log(this.y);
+    console.log(this.sprite);
+    console.log(this);
+    ctx.drawImage(this.sprite, this.x, this.y);
+};
+//Writing not using prototype cc
+Player.render = function() {
+    console.log(this.x);
+    console.log(this.y);
+    console.log(this.sprite);
+    console.log(this);
+    ctx.drawImage(this.sprite, this.x, this.y);
+};
+
+
+
+
+// cc For handling key stroke input.
+Player.prototype.handleInput = function(arrow) {
+    var lat = this.y
+    var loung = this.x 
+    console.log(arrow);
+    if (arrow = "up" ) {
+    this.y  = lat + 83;
+}
+ if (arrow = "down" ) {
+    this.y  = lat - 83;
+}
+if (arrow = "left" ) {
+    this.x  = loung + 101;
+}
+if (arrow = "right" ) {
+    this.x  = loung - 101;
+}   
+};
+// Writing without prototype cc
+Player.handleInput = function(arrow) {
+    var lat = this.y
+    var loung = this.x 
+if (arrow === "up" ) {
+    this.y  = lat - 83;
+}
+ if (arrow === "down" ) {
+   this.y  = lat + 83;
+}
+if (arrow === "left" ) {
+   this.x  = loung - 101;
+}
+if (arrow === "right" ) {
+   this.x  = loung + 101;
+}   
+if (lat < 84) {
+    this.x = 210;
+    this.y = 415;
+}
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+    var enemy1 = Object.create(Enemy);
+ //   enemy1.x = 1;
+ //   enemy1.y = Math.floor((Math.random() * 3) + 1) *83 ;
+    enemy1.sprite = new Image();
+    enemy1.sprite.src = 'images/enemy-bug.png';
+ //   enemy1.speed = Math.floor((Math.random() * 8) + 1);
 
+   
+    var enemy2 = Object.create(Enemy);
+    enemy2.x = 1;
+    enemy2.y = Math.floor((Math.random() * 3) + 1) *83 ;
+    enemy2.sprite = new Image();
+    enemy2.sprite.src = 'images/enemy-bug.png';
+    enemy2.speed = Math.floor((Math.random() * 8) + 1);
+   
+
+
+    var enemy3 = Object.create(Enemy);
+    enemy3.x = 1;
+    enemy3.y = Math.floor((Math.random() * 3) + 1) *83 ;
+    enemy3.sprite = new Image();
+    enemy3.sprite.src = 'images/enemy-bug.png';
+    enemy3.speed = Math.floor((Math.random() * 8) + 1);
+
+    var enemy4 = Object.create(Enemy);
+    enemy4.sprite = new Image();
+    enemy4.sprite.src = 'images/enemy-bug.png';
+
+    var allEnemies = [enemy1, enemy2, enemy3
+    ];
+
+var player = Object.create(Player);
+player.x = 210;
+player.y = 415;
+player.sprite = new Image();
+player.sprite.src = 'images/char-princess-girl.png';
 
 
 // This listens for key presses and sends the keys to your
@@ -41,6 +206,6 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-
+console.log(allowedKeys[e.keyCode]);
     player.handleInput(allowedKeys[e.keyCode]);
 });
