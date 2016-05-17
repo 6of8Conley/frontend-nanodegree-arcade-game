@@ -7,11 +7,11 @@ var Enemy = function() {
     // a helper we've provided to easily load images
     
     this.sprite = 'images/enemy-bug.png';
-    this.x = 1;
-    this.y = Math.floor((Math.random() * 3) + 1) *83 ;
+   //  this.x = 1;
+   //  this.y = Math.floor((Math.random() * 3) + 1) *83 ;
    // Enemy.sprite = new Image();
    // Enemy.sprite.src = 'images/enemy-bug.png';
-    this.speed = Math.floor((Math.random() * 8) + 1);
+   //  this.speed = Math.floor((Math.random() * 8) + 1);
     
 };
 
@@ -124,13 +124,13 @@ Player.prototype.handleInput = function(arrow) {
     if (arrow = "up" ) {
     this.y  = lat + 83;
 }
- if (arrow = "down" ) {
+ if (arrow = "down" && lat > 415) {
     this.y  = lat - 83;
 }
-if (arrow = "left" ) {
+if (arrow = "left" && this.x > 202) {
     this.x  = loung + 101;
 }
-if (arrow = "right" ) {
+if (arrow = "right" && loung < 500) {
     this.x  = loung - 101;
 }   
 };
@@ -141,13 +141,13 @@ Player.handleInput = function(arrow) {
 if (arrow === "up" ) {
     this.y  = lat - 83;
 }
- if (arrow === "down" ) {
+ if (arrow === "down" && lat > 415) {
    this.y  = lat + 83;
 }
-if (arrow === "left" ) {
+if (arrow === "left" && this.x > 101) {
    this.x  = loung - 101;
 }
-if (arrow === "right" ) {
+if (arrow === "right" && this.x < 400) {
    this.x  = loung + 101;
 }   
 if (lat < 84) {
@@ -160,11 +160,11 @@ if (lat < 84) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
     var enemy1 = Object.create(Enemy);
- //   enemy1.x = 1;
- //   enemy1.y = Math.floor((Math.random() * 3) + 1) *83 ;
+    enemy1.x = 1;
+    enemy1.y = Math.floor((Math.random() * 3) + 1) *83 ;
     enemy1.sprite = new Image();
     enemy1.sprite.src = 'images/enemy-bug.png';
- //   enemy1.speed = Math.floor((Math.random() * 8) + 1);
+    enemy1.speed = Math.floor((Math.random() * 8) + 1);
 
    
     var enemy2 = Object.create(Enemy);
