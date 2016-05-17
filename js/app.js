@@ -6,7 +6,7 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     // this.sprite = 'images/enemy-bug.png';
-    
+
 };
 
 Enemy.sprite = new Image();
@@ -16,20 +16,21 @@ Enemy.x = 1;
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
- var moveMent = this.x;
-  this.x = moveMent + ( 30 * dt * this.speed);
-console.log(player.x);
-  if (this.x > 505) {
-    this.x = 0;
-    this.speed = Math.floor((Math.random() * 8) + 1);
-    this.y = Math.floor((Math.random() * 3) + 1) * 83;
-  }
-   if (player.x - this.x  < 55 && player.x - this.x > -25) {
-    if (player.y - this.y  < 5) {
-    player.x = 210;
-    player.y = 415;
-    player.update();
-   }} 
+    var moveMent = this.x;
+    this.x = moveMent + (30 * dt * this.speed);
+    console.log(player.x);
+    if (this.x > 505) {
+        this.x = 0;
+        this.speed = Math.floor((Math.random() * 8) + 1);
+        this.y = Math.floor((Math.random() * 3) + 1) * 83;
+    }
+    if (player.x - this.x < 55 && player.x - this.x > -25) {
+        if (player.y - this.y < 5) {
+            player.x = 210;
+            player.y = 415;
+            player.update();
+        }
+    }
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -37,20 +38,21 @@ console.log(player.x);
 
 //Test
 Enemy.update = function(dt) {
-  var moveMent = this.x;
-  this.x = moveMent + ( 30 * dt * this.speed);
-console.log(player.x);
-  if (this.x > 505) {
-    this.x = 0;
-    this.speed = Math.floor((Math.random() * 8) + 1);
-    this.y = Math.floor((Math.random() * 3) + 1) * 83;
-  }
-   if (player.x - this.x  < 55 && player.x - this.x > -25) {
-    if (player.y - this.y  < 5) {
-    player.x = 210;
-    player.y = 415;
-    player.update();
-   }}
+    var moveMent = this.x;
+    this.x = moveMent + (30 * dt * this.speed);
+    console.log(player.x);
+    if (this.x > 505) {
+        this.x = 0;
+        this.speed = Math.floor((Math.random() * 8) + 1);
+        this.y = Math.floor((Math.random() * 3) + 1) * 83;
+    }
+    if (player.x - this.x < 55 && player.x - this.x > -25) {
+        if (player.y - this.y < 5) {
+            player.x = 210;
+            player.y = 415;
+            player.update();
+        }
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -84,7 +86,7 @@ Player.prototype.update = function() {
 
 //Writing not using prototype cc
 Player.update = function() {
- ctx.drawImage(this.sprite, this.x, this.y);
+    ctx.drawImage(this.sprite, this.x, this.y);
 };
 
 // Draw the enemy on the screen, required method for game
@@ -109,64 +111,63 @@ Player.render = function() {
 
 // cc For handling key stroke input.
 Player.prototype.handleInput = function(arrow) {
-   var lat = this.y
-    var loung = this.x 
-if (arrow === "up" ) {
-    this.y  = lat - 83;
-}
- if (arrow === "down" && this.y < 400) {
-   this.y  = lat + 83;
-}
-if (arrow === "left" && this.x > 101) {
-   this.x  = loung - 101;
-}
-if (arrow === "right" && this.x < 400) {
-   this.x  = loung + 101;
-}   
-if (lat < 84) {
-    this.x = 210;
-    this.y = 415;
-}
+    var lat = this.y
+    var loung = this.x
+    if (arrow === "up") {
+        this.y = lat - 83;
+    }
+    if (arrow === "down" && this.y < 400) {
+        this.y = lat + 83;
+    }
+    if (arrow === "left" && this.x > 101) {
+        this.x = loung - 101;
+    }
+    if (arrow === "right" && this.x < 400) {
+        this.x = loung + 101;
+    }
+    if (lat < 84) {
+        this.x = 210;
+        this.y = 415;
+    }
 };
 // Writing handleInput without prototype cc
 Player.handleInput = function(arrow) {
     var lat = this.y
-    var loung = this.x 
-if (arrow === "up" ) {
-    this.y  = lat - 83;
-}
- if (arrow === "down" && this.y < 400) {
-   this.y  = lat + 83;
-}
-if (arrow === "left" && this.x > 101) {
-   this.x  = loung - 101;
-}
-if (arrow === "right" && this.x < 400) {
-   this.x  = loung + 101;
-}   
-if (lat < 84) {
-    this.x = 210;
-    this.y = 415;
-}
+    var loung = this.x
+    if (arrow === "up") {
+        this.y = lat - 83;
+    }
+    if (arrow === "down" && this.y < 400) {
+        this.y = lat + 83;
+    }
+    if (arrow === "left" && this.x > 101) {
+        this.x = loung - 101;
+    }
+    if (arrow === "right" && this.x < 400) {
+        this.x = loung + 101;
+    }
+    if (lat < 84) {
+        this.x = 210;
+        this.y = 415;
+    }
 };
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-    var enemy1 = Object.create(Enemy);
-    enemy1.y = Math.floor((Math.random() * 3) + 1) *83 ;
-    enemy1.speed = Math.floor((Math.random() * 8) + 1);
-  
-    var enemy2 = Object.create(Enemy);
-    enemy2.y = Math.floor((Math.random() * 3) + 1) *83 ;
-    enemy2.speed = Math.floor((Math.random() * 8) + 1);
-   
-    var enemy3 = Object.create(Enemy);
-    enemy3.y = Math.floor((Math.random() * 3) + 1) *83 ;
-    enemy3.speed = Math.floor((Math.random() * 8) + 1);
+var enemy1 = Object.create(Enemy);
+enemy1.y = Math.floor((Math.random() * 3) + 1) * 83;
+enemy1.speed = Math.floor((Math.random() * 8) + 1);
 
-    var allEnemies = [enemy1, enemy2, enemy3
-    ];
+var enemy2 = Object.create(Enemy);
+enemy2.y = Math.floor((Math.random() * 3) + 1) * 83;
+enemy2.speed = Math.floor((Math.random() * 8) + 1);
+
+var enemy3 = Object.create(Enemy);
+enemy3.y = Math.floor((Math.random() * 3) + 1) * 83;
+enemy3.speed = Math.floor((Math.random() * 8) + 1);
+
+var allEnemies = [enemy1, enemy2, enemy3];
 
 var player = Object.create(Player);
 player.x = 210;
@@ -184,6 +185,6 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-console.log(allowedKeys[e.keyCode]);
+    console.log(allowedKeys[e.keyCode]);
     player.handleInput(allowedKeys[e.keyCode]);
 });
