@@ -5,27 +5,31 @@ var Enemy = function() {
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    
-    this.sprite = 'images/enemy-bug.png';
-   // this.x = 1;
-   // this.y = Math.floor((Math.random() * 3) + 1) *83 ;
-   // Enemy.sprite = new Image();
-   // Enemy.sprite.src = 'images/enemy-bug.png';
-   // this.speed = Math.floor((Math.random() * 8) + 1);
+    // this.sprite = 'images/enemy-bug.png';
     
 };
+
+Enemy.sprite = new Image();
+Enemy.sprite.src = 'images/enemy-bug.png';
+Enemy.x = 1;
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
  var moveMent = this.x;
-  this.x = moveMent + ( 10 * dt * this.speed);
-
+  this.x = moveMent + ( 30 * dt * this.speed);
+console.log(player.x);
   if (this.x > 505) {
     this.x = 0;
     this.speed = Math.floor((Math.random() * 8) + 1);
     this.y = Math.floor((Math.random() * 3) + 1) * 83;
-  }   
+  }
+   if (player.x - this.x  < 55 && player.x - this.x > -25) {
+    if (player.y - this.y  < 5) {
+    player.x = 210;
+    player.y = 415;
+    player.update();
+   }} 
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -51,21 +55,11 @@ console.log(player.x);
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    // ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    console.log(this.x);
-    console.log(this.y);
-    console.log(this.sprite);
-    console.log(this);
     ctx.drawImage(this.sprite, this.x, this.y);
 };
 
-//Test
+//Not using prototype
 Enemy.render = function() {
-    // ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    console.log(this.x);
-    console.log(this.y);
-    console.log(this.sprite);
-    console.log(this);
     ctx.drawImage(this.sprite, this.x, this.y);
 };
 
@@ -85,16 +79,13 @@ var Player = function(x, y) {
 // Update the players's position, required method for game
 // Parameter: dt, a time delta between ticks
 Player.prototype.update = function() {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
     ctx.drawImage(this.sprite, this.x, this.y);
 };
+
 //Writing not using prototype cc
 Player.update = function() {
  ctx.drawImage(this.sprite, this.x, this.y);
 };
-
 
 // Draw the enemy on the screen, required method for game
 Player.prototype.render = function() {
@@ -118,23 +109,26 @@ Player.render = function() {
 
 // cc For handling key stroke input.
 Player.prototype.handleInput = function(arrow) {
-//     var lat = this.y
-//     var loung = this.x 
-//     console.log(arrow);
-//     if (arrow = "up" ) {
-//     this.y  = lat + 83;
-// }
-//  if (arrow = "down" && lat > 415) {
-//     this.y  = lat - 83;
-// }
-// if (arrow = "left" && this.x > 202) {
-//     this.x  = loung + 101;
-// }
-// if (arrow = "right" && loung < 500) {
-//     this.x  = loung - 101;
-// }   
+   var lat = this.y
+    var loung = this.x 
+if (arrow === "up" ) {
+    this.y  = lat - 83;
+}
+ if (arrow === "down" && this.y < 400) {
+   this.y  = lat + 83;
+}
+if (arrow === "left" && this.x > 101) {
+   this.x  = loung - 101;
+}
+if (arrow === "right" && this.x < 400) {
+   this.x  = loung + 101;
+}   
+if (lat < 84) {
+    this.x = 210;
+    this.y = 415;
+}
 };
-// Writing without prototype cc
+// Writing handleInput without prototype cc
 Player.handleInput = function(arrow) {
     var lat = this.y
     var loung = this.x 
@@ -160,32 +154,16 @@ if (lat < 84) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
     var enemy1 = Object.create(Enemy);
-    enemy1.x = 1;
     enemy1.y = Math.floor((Math.random() * 3) + 1) *83 ;
-    enemy1.sprite = new Image();
-    enemy1.sprite.src = 'images/enemy-bug.png';
     enemy1.speed = Math.floor((Math.random() * 8) + 1);
-
-   
+  
     var enemy2 = Object.create(Enemy);
-    enemy2.x = 1;
     enemy2.y = Math.floor((Math.random() * 3) + 1) *83 ;
-    enemy2.sprite = new Image();
-    enemy2.sprite.src = 'images/enemy-bug.png';
     enemy2.speed = Math.floor((Math.random() * 8) + 1);
    
-
-
     var enemy3 = Object.create(Enemy);
-    enemy3.x = 1;
     enemy3.y = Math.floor((Math.random() * 3) + 1) *83 ;
-    enemy3.sprite = new Image();
-    enemy3.sprite.src = 'images/enemy-bug.png';
     enemy3.speed = Math.floor((Math.random() * 8) + 1);
-
-    var enemy4 = Object.create(Enemy);
-    enemy4.sprite = new Image();
-    enemy4.sprite.src = 'images/enemy-bug.png';
 
     var allEnemies = [enemy1, enemy2, enemy3
     ];
