@@ -7,11 +7,11 @@ var Enemy = function() {
     // a helper we've provided to easily load images
     
     this.sprite = 'images/enemy-bug.png';
-   //  this.x = 1;
-   //  this.y = Math.floor((Math.random() * 3) + 1) *83 ;
+   // this.x = 1;
+   // this.y = Math.floor((Math.random() * 3) + 1) *83 ;
    // Enemy.sprite = new Image();
    // Enemy.sprite.src = 'images/enemy-bug.png';
-   //  this.speed = Math.floor((Math.random() * 8) + 1);
+   // this.speed = Math.floor((Math.random() * 8) + 1);
     
 };
 
@@ -118,21 +118,21 @@ Player.render = function() {
 
 // cc For handling key stroke input.
 Player.prototype.handleInput = function(arrow) {
-    var lat = this.y
-    var loung = this.x 
-    console.log(arrow);
-    if (arrow = "up" ) {
-    this.y  = lat + 83;
-}
- if (arrow = "down" && lat > 415) {
-    this.y  = lat - 83;
-}
-if (arrow = "left" && this.x > 202) {
-    this.x  = loung + 101;
-}
-if (arrow = "right" && loung < 500) {
-    this.x  = loung - 101;
-}   
+//     var lat = this.y
+//     var loung = this.x 
+//     console.log(arrow);
+//     if (arrow = "up" ) {
+//     this.y  = lat + 83;
+// }
+//  if (arrow = "down" && lat > 415) {
+//     this.y  = lat - 83;
+// }
+// if (arrow = "left" && this.x > 202) {
+//     this.x  = loung + 101;
+// }
+// if (arrow = "right" && loung < 500) {
+//     this.x  = loung - 101;
+// }   
 };
 // Writing without prototype cc
 Player.handleInput = function(arrow) {
@@ -141,7 +141,7 @@ Player.handleInput = function(arrow) {
 if (arrow === "up" ) {
     this.y  = lat - 83;
 }
- if (arrow === "down" && lat > 415) {
+ if (arrow === "down" && this.y < 400) {
    this.y  = lat + 83;
 }
 if (arrow === "left" && this.x > 101) {
