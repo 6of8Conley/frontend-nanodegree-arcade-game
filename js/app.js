@@ -6,11 +6,11 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     // this.sprite = 'images/enemy-bug.png';
-this.sprite = new Image();
-this.sprite.src = 'images/enemy-bug.png';
-this.x = 1;
-this.y = Math.floor((Math.random() * 3) + 1) * 83;
-this.speed = Math.floor((Math.random() * 8) + 1);
+    this.sprite = new Image();
+    this.sprite.src = 'images/enemy-bug.png';
+    this.x = 1;
+    this.y = Math.floor((Math.random() * 3) + 1) * 83;
+    this.speed = Math.floor((Math.random() * 8) + 1);
 };
 
 
@@ -43,11 +43,6 @@ Enemy.prototype.render = function() {
     ctx.drawImage(this.sprite, this.x, this.y);
 };
 
-//Not using prototype
-Enemy.render = function() {
-    ctx.drawImage(this.sprite, this.x, this.y);
-};
-
 // Now write your own player class CHECK
 // This class requires an update(), render() and 
 // a handleInput() method. CHECK
@@ -55,13 +50,12 @@ Enemy.render = function() {
 var Player = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-
     // The image/sprite for our player, this uses
     // a helper we've provided to easily load images
-this.x = 210;
-this.y = 415;
-this.sprite = new Image();
-this.sprite.src = 'images/char-princess-girl.png';
+    this.x = 210;
+    this.y = 415;
+    this.sprite = new Image();
+    this.sprite.src = 'images/char-princess-girl.png';
 };
 
 // Update the players's position, required method for game
@@ -70,12 +64,6 @@ Player.prototype.update = function() {
     ctx.drawImage(this.sprite, this.x, this.y);
 };
 
-//Writing not using prototype cc
-// Player.update = function() {
-//     ctx.drawImage(this.sprite, this.x, this.y);
-// };
-
-// Draw the enemy on the screen, required method for game
 Player.prototype.render = function() {
     ctx.drawImage(this.sprite, this.x, this.y);
 };
@@ -106,15 +94,13 @@ Player.prototype.handleInput = function(arrow) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-
-
 var enemy1 = new Enemy();
 var enemy2 = new Enemy();
 var enemy3 = new Enemy();
 
 var allEnemies = [enemy1, enemy2, enemy3];
 
-var player = new (Player);
+var player = new(Player);
 // player.x = 210;
 // player.y = 415;
 // player.sprite = new Image();
