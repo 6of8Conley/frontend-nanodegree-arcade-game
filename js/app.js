@@ -27,7 +27,7 @@ Enemy.prototype.update = function(dt) {
         this.y = Math.floor((Math.random() * 3) + 1) * 83;
     }
     if (player.x - this.x < 55 && player.x - this.x > -25) {
-        if (player.y - this.y < 5) {
+        if (player.y - this.y < 5 && player.y - this.y > -5) {
             player.x = 210;
             player.y = 415;
             player.update();
@@ -49,7 +49,8 @@ Enemy.update = function(dt) {
         this.y = Math.floor((Math.random() * 3) + 1) * 83;
     }
     if (player.x - this.x < 55 && player.x - this.x > -25) {
-        if (player.y - this.y < 5) {
+        if (player.y - this.y < 5 && player.y - this.y > -5) {
+            console.log("Hit", player.y, this.y);
             player.x = 210;
             player.y = 415;
             player.update();
@@ -93,18 +94,18 @@ Player.update = function() {
 
 // Draw the enemy on the screen, required method for game
 Player.prototype.render = function() {
-    console.log(this.x);
-    console.log(this.y);
-    console.log(this.sprite);
-    console.log(this);
+    // console.log(this.x);
+    // console.log(this.y);
+    // console.log(this.sprite);
+    // console.log(this);
     ctx.drawImage(this.sprite, this.x, this.y);
 };
 //Writing not using prototype cc
 Player.render = function() {
-    console.log(this.x);
-    console.log(this.y);
-    console.log(this.sprite);
-    console.log(this);
+    // console.log(this.x);
+    // console.log(this.y);
+    // console.log(this.sprite);
+    // console.log(this);
     ctx.drawImage(this.sprite, this.x, this.y);
 };
 
