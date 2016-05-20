@@ -6,14 +6,12 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     // this.sprite = 'images/enemy-bug.png';
-this.sprite = new Image();
-this.sprite.src = 'images/enemy-bug.png';
-this.x = 1;
-this.y = Math.floor((Math.random() * 3) + 1) * 83;
-this.speed = Math.floor((Math.random() * 8) + 1);
+
 };
 
-
+Enemy.sprite = new Image();
+Enemy.sprite.src = 'images/enemy-bug.png';
+Enemy.x = 1;
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -157,12 +155,17 @@ Player.handleInput = function(arrow) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+var enemy1 = Object.create(Enemy);
+enemy1.y = Math.floor((Math.random() * 3) + 1) * 83;
+enemy1.speed = Math.floor((Math.random() * 8) + 1);
 
+var enemy2 = Object.create(Enemy);
+enemy2.y = Math.floor((Math.random() * 3) + 1) * 83;
+enemy2.speed = Math.floor((Math.random() * 8) + 1);
 
-
-var enemy1 = new Enemy();
-var enemy2 = new Enemy();
-var enemy3 = new Enemy();
+var enemy3 = Object.create(Enemy);
+enemy3.y = Math.floor((Math.random() * 3) + 1) * 83;
+enemy3.speed = Math.floor((Math.random() * 8) + 1);
 
 var allEnemies = [enemy1, enemy2, enemy3];
 
