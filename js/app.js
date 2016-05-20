@@ -70,8 +70,8 @@ Player.prototype.render = function() {
 
 // cc For handling key stroke input.
 Player.prototype.handleInput = function(arrow) {
-    var lat = this.y
-    var loung = this.x
+    var lat = this.y;
+    var loung = this.x;
     if (arrow === "up") {
         this.y = lat - 83;
     }
